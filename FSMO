@@ -6,7 +6,9 @@ netdom query fsmo
 #Move para o servidor secundario as FSMO e o torna primario na operacao
 
 Move-ADDirectoryServerOperationMasterRole -Identity NOMEDOSERVIDOR -OperationMasterRole 0,1,2,3,4 -force
-Playlist em destaque
+
+dcdiag /v /fix
+netdiag /v /fix
 
 
 https://www.dtonias.com/transfer-fsmo-roles-domain-controller/
