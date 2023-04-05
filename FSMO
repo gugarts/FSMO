@@ -7,3 +7,7 @@ netdom query fsmo
 
 Move-ADDirectoryServerOperationMasterRole -Identity NOMEDOSERVIDOR -OperationMasterRole 0,1,2,3,4 -force
 Playlist em destaque
+
+
+https://www.dtonias.com/transfer-fsmo-roles-domain-controller/
+https://www.youtube.com/watch?v=HYXSggRPpfo
