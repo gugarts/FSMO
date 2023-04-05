@@ -11,3 +11,20 @@ Playlist em destaque
 
 https://www.dtonias.com/transfer-fsmo-roles-domain-controller/
 https://www.youtube.com/watch?v=HYXSggRPpfo
+
+
+
+
+Seizing FSMO Roles using PowerShell
+Import the Active Directory module into PowerShell using the following command.
+Import-Module ActiveDirectory
+The domain controller which holds the FSMO role can be identified using the following commands.
+Get-ADDomain | Select PDCEmulator, RIDMaster, InfrastructureMaster | Format-List
+Get-ADForest | Select SchemaMaster, DomainNamingMaster | Format-List
+The FSMO roles are seized using the following command.
+Move-ADDirectoryServerOperationMasterRole -Identity dc02 –OperationMasterRole 0,1,2,3,4  -Force
+Here, -identity specifies the target DC, -OperationMasterRole indicates the roles to be transferred and -Force specifies the parameter which is used for seizing the FSMO roles.
+To accept the transfer of roles, type A and press Enter.
+After seizing the roles, check for any errors and fix them using the following commands.
+dcdiag /v /fix
+netdiag /v /fix
